@@ -1,8 +1,8 @@
 def find_repetitions(firstl, secondl):
-    repeated = []
+    repeated = set() 
     for item in firstl:
-        if item in secondl:
-            repeated.append(item)
+        if firstl.count(item) > 1 and item in secondl:
+            repeated = repeated.union(item)
     return repeated
 
 def main():
@@ -16,20 +16,22 @@ def main():
                 \n1) Edit the first list. \
                 \n2) Edit the second list. \
                 \n3) Check repeated members. \
-                \n5) Quit.\n"
+                \n4) Quit.\n"
         )
         action = input()
         if action == "1":
             new_list = input("Input the new list. Members must be separated by spaces: ").split() 
+            firstlist = new_list
         if action == "2":
             new_list = input("Input the new list. Members must be separated by spaces: ").split() 
+            secondlist = new_list
         if action == "3":
-            print(find_repetitions(firstlist, secondlist))
+            print("Here are the repetitions: ")
+            for repeat in find_repetitions(firstlist, secondlist):
+                print(repeat, end = " ")
+            print("\n")
         if action == "4":
             return 0
-        else:
-            print("Choose another action.")
-    return 0
 
 if __name__=="__main__":
     main()
