@@ -1,11 +1,11 @@
-"""Get the repeated items of a list that are part of the other list"""
-def find_repetitions(firstl, secondl):
-    """Finds the repeated items of a that are in b"""
-    repeated = set()
+"""Get the items that repeat in two lists"""
+def find_same(firstl, secondl):
+    """Finds the items that are in b and a"""
+    same = set()
     for item in firstl:
-        if firstl.count(item) > 1 and item in secondl:
-            repeated = repeated.union(item)
-    return repeated
+        if item in secondl:
+            same = same.union(item)
+    return same
 
 def main():
     """Main function implementing a menu"""
@@ -31,8 +31,8 @@ def main():
             Members must be separated by spaces: ").split()
             secondlist = new_list
         if action == "3":
-            print("Here are the repetitions: ")
-            for repeat in find_repetitions(firstlist, secondlist):
+            print("Here are the same items: ")
+            for repeat in find_same(firstlist, secondlist):
                 print(repeat, end = " ")
             print("\n")
 
