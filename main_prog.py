@@ -1,11 +1,14 @@
+"""Get the repeated items of a list that are part of the other list"""
 def find_repetitions(firstl, secondl):
-    repeated = set() 
+    """Finds the repeated items of a that are in b"""
+    repeated = set()
     for item in firstl:
         if firstl.count(item) > 1 and item in secondl:
             repeated = repeated.union(item)
     return repeated
 
 def main():
+    """Main function implementing a menu"""
     firstlist = []
     secondlist = []
     action = 0
@@ -20,19 +23,18 @@ def main():
         )
         action = input()
         if action == "1":
-            new_list = input("Input the new list. Members must be separated by spaces: ").split() 
+            new_list = input("Input the new list.\
+            Members must be separated by spaces: ").split()
             firstlist = new_list
         if action == "2":
-            new_list = input("Input the new list. Members must be separated by spaces: ").split() 
+            new_list = input("Input the new list.\
+            Members must be separated by spaces: ").split()
             secondlist = new_list
         if action == "3":
             print("Here are the repetitions: ")
             for repeat in find_repetitions(firstlist, secondlist):
                 print(repeat, end = " ")
             print("\n")
-        if action == "4":
-            return 0
 
 if __name__=="__main__":
     main()
-   
