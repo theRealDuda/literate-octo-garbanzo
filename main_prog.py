@@ -1,11 +1,11 @@
-"""Get the items that repeat in two lists"""
+"""Get the items that occur more than once in two lists"""
 def find_same(firstl, secondl):
-    """Finds the items that are in b and a"""
-    same = set()
+    """Finds the items that occur more than once b and a"""
+    common = set()
     for item in firstl:
-        if item in secondl:
-            same = same.union(item)
-    return same
+        if firstl.count(item) + secondl.count(item):
+            common = common.union(item)
+    return common
 
 def main():
     """Main function implementing a menu"""
@@ -18,7 +18,7 @@ def main():
             "Choose an action: \
                 \n1) Edit the first list. \
                 \n2) Edit the second list. \
-                \n3) Check repeated members. \
+                \n3) Check commonly seen members. \
                 \n4) Quit.\n"
         )
         action = input()
@@ -31,7 +31,7 @@ def main():
             Members must be separated by spaces: ").split()
             secondlist = new_list
         if action == "3":
-            print("Here are the same items: ")
+            print("Here are the common items: ")
             for repeat in find_same(firstlist, secondlist):
                 print(repeat, end = " ")
             print("\n")
